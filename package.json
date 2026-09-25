@@ -1,0 +1,21 @@
+{
+  "name": "movigo-local",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "customer-app",
+    "store-dashboard"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,shop,store -c yellow,green,blue \"npm run dev -w backend\" \"npm run dev -w customer-app\" \"npm run dev -w store-dashboard\"",
+    "dev:backend": "npm run dev -w backend",
+    "dev:customer": "npm run dev -w customer-app",
+    "dev:store": "npm run dev -w store-dashboard",
+    "seed": "npm run seed -w backend",
+    "test": "npm test -w backend",
+    "build": "npm run typecheck -w backend && npm run build -w customer-app && npm run build -w store-dashboard"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
